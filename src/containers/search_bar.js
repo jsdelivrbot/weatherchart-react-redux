@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import config from '../../config.json'
+
 export default class SearchBar extends Component {
   constructor(props){
     super(props);
@@ -9,14 +11,23 @@ export default class SearchBar extends Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange(event){
+  onInputChange(event) {
     console.log(event.target.value);
+    console.log(config.API_KEY)
     this.setState({ term: event.target.value });
   }
 
+  //In order to prevent the page from refreshing when pressing enter or submit
+  onFormSubmit(event) {
+    event.preventDefault();
+  }
+
+
   render() {
     return(
-      <form className="input-group">
+      <form
+        className="input-group"
+        onSubmit={this.onFormSubmit}>
         <input
           placeholder="Get a five-day forecast in your favorite cities"
           className='form-control'
