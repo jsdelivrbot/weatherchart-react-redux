@@ -11,10 +11,10 @@ export default (props) => {
     <div>
       <Sparklines svgHeight={120} svgWidth={180} data={props.data}>
         <SparklinesLine color={props.color}/>
-        <SparklinesReferenceLine type='avg' />
+        <SparklinesReferenceLine type='avg'/>
       </Sparklines>
       <div>
-        {average(props.data)}
+        {average(props.data)} {props.units}
       </div>
     </div>
   );
